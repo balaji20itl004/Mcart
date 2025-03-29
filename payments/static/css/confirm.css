@@ -1,0 +1,222 @@
+/* Googlefont Poppins CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+/* Main Container */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Section Headings */
+h2, h3 {
+    color: #333;
+    font-size: 20px;
+    border-bottom: 2px solid #FFD814;
+    padding-bottom: 5px;
+}
+
+/* Product Section */
+.product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.product img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.product-price {
+    font-size: 18px;
+    color: #B12704;
+    font-weight: bold;
+}
+
+
+/* UPI Payment Form Styling */
+.upi-form {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.upi-form h2 {
+    font-size: 20px;
+    color: #333;
+    border-bottom: 2px solid #FFD814;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/* Input Fields */
+.upi-form input[type="text"] {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Button Styling */
+.upi-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #FFD814;
+    color: #111;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.upi-form button:hover {
+    background-color: #F7CA00;
+}
+
+/* Message Styling */
+.upi-form p {
+    font-size: 14px;
+    color: #B12704;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Card Payment Container */
+#card-container {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 450px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Heading Styling */
+#card-container h2 {
+    font-size: 20px;
+    color: #333;
+    border-bottom: 2px solid #FFD814;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/* Input Fields */
+#card-container input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: left;
+}
+
+/* Special Styling for Card Number */
+#card-container input[name="card-number"] {
+    font-family: monospace;
+    letter-spacing: 2px;
+}
+
+/* Button Styling */
+#card-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #FFD814;
+    color: #111;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#card-container button:hover {
+    background-color: #F7CA00;
+}
+
+/* Message Styling */
+#card-container p {
+    font-size: 14px;
+    color: #B12704;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+
+/* Order Summary */
+.order-summary {
+    margin-top: 20px;
+    padding: 15px;
+    background: #FAFAFA;
+    border-radius: 5px;
+}
+
+.order-summary h2 {
+    color: #333;
+    font-size: 18px;
+}
+
+.order-summary p {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Total Price Styling */
+.total-price {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+    color: #B12704;
+}
+
+/* Continue Shopping Button */
+.continue-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #FFA41C;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.continue-btn:hover {
+    background-color: #FF8C00;
+}

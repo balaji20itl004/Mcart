@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update comment</title>
+    <link rel="stylesheet" href="{% static 'css/updatecomment.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+        <a href="{% url 'home' %}"><img src="{% static 'images/Mcart.png' %}" alt="MCart"></a> 
+         <div class="nav-links">
+             <ul class="links">
+                 <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+                 <li><a href="#"><i class="fa-solid fa-mobile"></i> Products</a>
+                    <ul class="htmlCss-sub-menu sub-menu">
+                        {% for product_category in product_category %}
+                       <li><a href="{% url 'product' product_category.id %}">{{product_category.name}}</a></li>
+                       {%endfor %}</ul> </li>
+                 <li><a href="{% url 'contactus' %}" ><i class="fa-brands fa-servicestack"></i> About Us</a></li>
+                 <li><a><i class="fa-solid fa-bars"></i> More</a>
+                     <ul class="htmlCss-sub-menu sub-menu">
+                        <li><a href="{% url 'userdashboard' %}">View profile</a></li>
+                        <li><a href="{% url 'sellproducts' %}">sell products</a></li>
+                       <li><a href="{% url 'logout' %}">Logout</a></li>
+                     </ul>
+                 </li> 
+             </ul>
+         </div>
+         <div class="user-welcome">
+            {% if user.is_authenticated %}
+                 <div class="login">
+                   <p>Welcome.</p>
+                   <h3>{{user.username}} !</h3> 
+                 </div>
+                {% else %} 
+                <div class="login-menu">
+                    <a href="{% url 'login' %}">Login</a>
+                </div> 
+            {% endif %}
+        </div>
+    </nav>
+     <div class="comment-edit-container">
+        <div class="product-details">
+            <p><strong>Product Name:</strong> {{ display_products.products.product_name }}</p>
+            <p><strong>Seller:</strong> {{ display_products.products.product_vendor }}</p>
+            <p><strong>Price:</strong> ₹{{ display_products.products.new_price }}</p>
+            <div class="comments">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ abc.as_p }}
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="social-media">
+                <p>Get connected with us on social networks:</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-google"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-linkedin-in"></i>
+                    <i class="fab fa-github"></i>
+                </div>
+            </div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MCart</h3>
+                    <p>Mcart is an e-commerce platform specializing in electronics. Customers can browse and purchase from trusted sellers, supporting small businesses with competitive prices.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>PRODUCTS</h3>
+                    <ul>
+                        {% for product_category in product_category %}
+                       <li><a href="{% url 'product' product_category.id %}">{{product_category.name}}</a></li>
+                       {%endfor %}
+                     </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>USEFUL LINKS</h3>
+                    <ul>
+                        <li>Your Account</li>
+                        <li>Become an Affiliate</li>
+                        <li>Shipping Rates</li>
+                        <li>Help</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>CONTACT</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Kovilpatti, Tamilnadu</li>
+                        <li><i class="fas fa-envelope"></i> mcart@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +91 6369483595</li>
+                        <li><i class="fas fa-print"></i> +02365989</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Mcart | Developed by <a href="https://github.com/balaji20itl004" target="_blank">Balaji S</a></p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/71719b7a0c.js" crossorigin="anonymous"></script>
+</body>
+</html>

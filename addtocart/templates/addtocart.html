@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mcart | add to cart</title>
+</head>
+<body>
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> MCart | Home</title>
+        <link rel="stylesheet" href="{% static 'css/addtocart.css' %}">
+    </head>
+    <body>
+        <nav>
+            <div class="navbar">
+            <a href="{% url 'home' %}"><img src="{% static 'images/Mcart.png' %}" alt="MCart"></a> 
+             <div class="nav-links">
+                 <ul class="links">
+                     <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+                     <li><a href="#"><i class="fa-solid fa-mobile"></i> Products</a>
+                        <ul class="htmlCss-sub-menu sub-menu">
+                            {% for categories in categories %}
+                           <li><a href="{% url 'product' categories.id %}">{{ categories.name }}</a></li>
+                          
+                           {%endfor %}
+                         </ul>
+                        
+                        </li>
+                     <li><a href="{% url 'contactus' %}" ><i class="fa-brands fa-servicestack"></i> About Us</a></li>
+                     <li><a><i class="fa-solid fa-bars"></i> More</a>
+                        
+                         <ul class="htmlCss-sub-menu sub-menu">
+                            <li><a href="{% url 'userdashboard' %}">View profile</a></li>
+                           <li><a href="{% url 'sellproducts' %}">sell products</a></li>
+                           <li><a href="{% url 'logout' %}">Logout</a></li>
+                         </ul>
+                     </li>
+                     
+                 </ul>
+             </div>
+
+             <div class="search-box">
+                <i class='bx bx-search'></i>
+                <div class="input-box">
+                    <form action="{% url 'home' %}" method="GET">
+                       <input type="text" placeholder="search..." name="product_name" value="{{ query }}">
+                       <button type="submit">Search</button>
+                    </form>
+                </div>
+                
+                {% if user.is_authenticated %}
+                <div class="login">
+                  <p>Welcome.</p>
+                  <h3>{{user.username}} !</h3> 
+                </div>
+           
+            {% else %} 
+            <div class="login-menu">
+               <a href="{% url 'login' %}">Login</a>
+           </div> 
+           {% endif %}
+       </div>
+    </nav>
+
+    <div class="poster">
+        <div class="LG">
+            <img src="{% static 'images/lgtvbanner.jpg' %}" alt="">
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="title">Your Shopping Cart</h2>
+    
+        <div class="cart">
+            <div class="cart-header">
+                <span>Product</span>
+                <span>Price</span>
+                <span>Quantity</span>
+                <span>Total Price</span>
+                <span>Delete</span>
+            </div>
+    
+            {% for cart_product in c_products %}
+            <div class="cart-item">
+                <!-- Product Section -->
+                <div class="product-info">
+                    <img src="{{ cart_product.products.product_image.url }}" alt="{{ cart_product.products }}" class="product-img">
+                    <p class="product-name">{{ cart_product.products.product_name }}</p>
+                </div>
+    
+                <!-- Price -->
+                <p class="price">₹{{ cart_product.products.new_price }}</p>
+    
+                <!-- Quantity -->
+                <div class="quantity">
+                    <p class="quantity-value">{{ cart_product.quantity }}</p>
+                </div>
+    
+                <!-- Total Price -->
+                <div class="total-price">
+                    <p class="total-cost">₹{{ cart_product.total_unit_cost }}</p>
+                </div>
+    
+                <!-- Delete Button -->
+                <div class="delete">
+                    <a href="{% url 'remove_from_cart' cart_product.id %}" class="delete-btn">Remove</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    
+        <!-- Cart Summary -->
+        <div class="cart-summary">
+            <h4>Total: <span style="color: red;">₹ {{ total_price }}</span></h4>
+            <a href="{% url 'cart_payment_page' %}" class="checkout-btn">Proceed to Checkout</a>
+            <a href="{% url 'home' %}" class="shop-btn">Continue Shopping</a>
+        </div>
+    </div>
+   
+</body>
+</html>

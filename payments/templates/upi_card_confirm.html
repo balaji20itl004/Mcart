@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/cardconfirm.css' %}">
+    <title>upi & card confirmation</title>
+</head>
+<body>
+    <!-- upi payment  -->
+    {% if method == "upi" %}
+    <div class="container">
+        <h1>Thank You {{ request.user }} for Your Order!</h1>
+        <p>Your order has been successfully placed through UPI. A confirmation email has been sent to your registered email address.</p>
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <!-- upi single product payment  -->
+                {% if products %}
+                    <div class="product">
+                        <p class="product-name">{{ products.product_name }}</p>
+                        <p class="product-price">{{ products.new_price }}</p>
+                    </div>
+                {% else %}
+                <!-- upi cart products payment  -->
+                {% for cart in carts %}
+                <div class="product">
+                    <p class="product-name">{{ cart.products.product_name }}</p>
+                    <p class="product-price">₹{{ cart.products.new_price }}</p>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        <a href="{% url 'home' %}" class="continue-btn">Continue Shopping</a>
+    </div>
+  {% else %}
+                        <!-- debit/credit card payment  -->
+  <div class="container">
+    <h1>Thank You {{ request.user }} for Your Order!</h1>
+    <p>Your order has been successfully placed through Debit Card. A confirmation email has been sent to your registered email address.</p>
+        <!-- Order Summary -->
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <!-- debit/credit single product payment  -->
+            {% if products %}
+                <div class="product">
+                    <p class="product-name">{{ products.product_name }}</p>
+                    <p class="product-price">{{ products.new_price }}</p>
+                </div>
+            {% else %}
+            <!-- debit/credit carts product payment  -->
+            {% for cart in carts %}
+            <div class="product">
+                <p class="product-name">{{ cart.products.product_name }}</p>
+                <p class="product-price">₹{{ cart.products.new_price }}</p>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    <a href="{% url 'home' %}" class="continue-btn">Continue Shopping</a>
+</div>
+  {% endif %}
+</body>
+</html>

@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category_name }} | Mcart</title>
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <a href="{% url 'home' %}"><img src="{% static 'images/Mcart.png' %}" alt="MCart"></a> 
+         <div class="nav-links">
+             <ul class="links">
+                 <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+                 <li><a href="#"><i class="fa-solid fa-mobile"></i> Products</a>
+                    <ul class="htmlCss-sub-menu sub-menu">
+                        {% for category_products in category %}
+                       <li><a href="{% url 'product' category_products.id %}">{{category_products.name}}</a></li>
+                       {%endfor %}
+                     </ul>
+                 </li>
+                 <li><a href="{% url 'contactus' %}"><i class="fa-brands fa-servicestack"></i> About Us</a></li>
+                 <li><a href="#"><i class="fa-solid fa-bars"></i> More</a>
+                   
+                    <ul class="htmlCss-sub-menu sub-menu">
+                        <li><a href="{% url 'userdashboard' %}">View profile</a></li>
+                        <li><a href="{% url 'sellproducts' %}">sell products</a></li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                 </li>
+             </ul>
+         </div>
+     
+         
+         <div class="search-box">
+                 <i class='bx bx-search'></i>
+                 <div class="input-box">
+                     <form action="{% url 'search'  %}" method="GET">
+                        <input type="text" placeholder="search..." name="product_name" value="{{ query }}">
+                        <button type="submit">Search</button>
+                     </form>
+                 </div>
+     
+                 {% if user.is_authenticated %}
+                 <div class="login">
+                   <p>Welcome.</p>
+                   <h3>{{user.username}} !</h3> 
+                </div>
+            
+                {% else %} 
+                <div class="login-menu">
+                    <a href="{% url 'login' %}">Login</a>
+                </div> 
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+     <div class="poster">
+        <div class="samsung">
+            <img src="{% static 'images/samsung.webp' %}" alt="">
+        </div>
+    </div>
+   
+    {% if search %}
+    <h2 style="text-align: center;">search products in "{{query}}"</h2>
+    {% for products in search %}
+    <div class="search-card-content">
+        <a href="{% url 'product_page' products.id %}">
+            <img src="{{ products.product_image.url }}" alt="{{ products.product_name }}" class="card-image">
+            <div class="card-details">
+                <h3 class="card-name">{{ products.product_name }}</h3>
+                <p class="card-description">{{ products.product_vendor }}</p>
+                <p class="card-price">Now ₹ {{ products.new_price }}</p>
+                <span class="original-price">M.R.P: ₹ {{ products.original_price }}</span>
+            </div>
+        </a>
+    </div>
+
+    {% endfor %}
+    {% elif query %}
+    <p>no products found</p>
+    {% endif %}
+
+    {% for brand_name, products in brand_products.items %}
+    <h3 class="heading">{{ brand_name }} Products</h3>
+
+    <div class="grid-container">
+        {% for products in products %}
+
+        <div class="product-card"> 
+          <a href="{% url 'product_page' products.id %}">  <img src="{{ products.product_image.url }}" alt="{{ products.product_image }}" class="card-image"> </a>
+            <div class="product-card-content">                                                          
+                <h3 class="card-name">{{ products.product_name }}</h3>
+                <p class="card-price">₹ {{ products.new_price }}</p>
+                <p class="card-vendor"> {{ products.product_vendor }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="social-media">
+                <p>Get connected with us on social networks:</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-google"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-linkedin-in"></i>
+                    <i class="fab fa-github"></i>
+                </div>
+            </div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MCart</h3>
+                    <p>Mcart is an e-commerce platform specializing in electronics. Customers can browse and purchase from trusted sellers, supporting small businesses with competitive prices.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>PRODUCTS</h3>
+                    <ul>
+                        {% for category_products in category %}
+                       <li><a href="{% url 'product' category_products.id %}">{{ category_products.name }}</a></li>
+                       {%endfor %}
+                     </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>USEFUL LINKS</h3>
+                    <ul>
+                        <li>Your Account</li>
+                        <li>Become an Affiliate</li>
+                        <li>Shipping Rates</li>
+                        <li>Help</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>CONTACT</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Kovilpatti, Tamilnadu</li>
+                        <li><i class="fas fa-envelope"></i> mcart@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +91 6369483595</li>
+                        <li><i class="fas fa-print"></i> +02365989</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Mcart | Developed by <a href="https://github.com/balaji20itl004" target="_blank">Balaji S</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/71719b7a0c.js" crossorigin="anonymous"></script>
+</body>
+</html>

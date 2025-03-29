@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/confirm.css' %}">
+    <title>Payment confirmation | </title>
+</head>
+<body>
+    {% if method == "upi" %}
+    <div class="container">
+        <h3>Product Details</h3>
+        <!-- upi payment selected carts product display  -->
+        {% if carts %}
+            {% for carts in carts %}
+                <div class="product">
+                    <p class="product-name">{{ carts.products.product_name }}</p>
+                    <p class="product-name">{{ carts.products.new_price }}</p>
+                </div>  
+            {% endfor %}
+        {% else %}
+        <!-- upi payment selected single product display  -->
+            <div class="product">
+                <p class="product-name">{{ products.product_name }}</p>
+                <p class="product-name">{{ products.new_price }}</p>
+            </div>  
+        {% endif %}
+    </div>  
+
+    <!-- upi form display  -->
+    <div class="upi-form">
+        <h2>UPI Payment</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="UPI" placeholder="example@upi" required>
+            <button type="submit">Proceed</button>
+        </form>
+
+        {% if messages %}
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+    
+<!-- debit/credit cards form display  -->
+{% elif method == "card" %}
+    <div id="card-container">
+        <h2>Debit & Credit Card Payment</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="card-name" placeholder="Enter cardholder name" required>
+            <input type="text" name="card-number" placeholder="xxxxxxxxxxxxxxxx" required>
+            <input type="date" name="card-date" required>
+            <input type="text" name="card-cvv" placeholder="Enter card CVV number" required>
+            <button type="submit">Proceed</button>
+        </form>
+    
+
+    {% if messages %}
+        {% for message in messages %}
+           <p>{{ message }}</p> 
+        {% endfor %}
+    {% endif %}
+</div>
+
+{% else %}
+    <!-- Cash on Delivery confirmation message-->
+    <div class="container">
+        <h1>Thank You {{ request.user }} for Your Order!</h1>
+        <p>Your order has been successfully placed. A confirmation email has been sent to your registered email address.</p>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <!-- cash on delivary carts product message -->
+            {% if carts %}
+                {% for cart in carts %}
+                    <div class="product">
+                        <p class="product-name">{{ cart.products.product_name }}</p>
+                        <p class="product-price">₹{{ cart.products.new_price }}</p>
+                    </div>
+                {% endfor %}
+                
+            {% else %}
+            <!-- cash on delivary single product message -->
+                <div class="product">
+                    <p class="product-name">{{ products.product_name }}</p>
+                    <p style="text-align: right;"><strong>Total Price: {{ totalprice }}</strong></p>
+                </div>
+            {% endif %}
+                
+        </div>
+
+        <a href="{% url 'home' %}" class="continue-btn">Continue Shopping</a>
+    </div>
+{% endif %}
+
+    
+</body>
+</html>

@@ -1,0 +1,443 @@
+/* Googlefont Poppins CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+/* Navbar Styling */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(177, 45, 45, 0.87);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    padding: 10px;
+}
+
+.navbar {
+    max-width: 1250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    padding: 0 30px;
+}
+
+.navbar img {
+    height: 50%;
+    max-width: 150px;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    line-height: 70px;
+}
+
+.links {
+    display: flex;
+}
+
+.links li {
+    list-style: none;
+    position: relative;
+    padding: 0 15px;
+}
+
+.links li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+}
+
+.links li a:hover {
+    background: #fff;
+    color: rgba(177, 45, 45, 0.87);
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+/* Dropdown Menu */
+.sub-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background: rgba(177, 45, 45, 0.95);
+    border-radius: 0 0 6px 6px;
+    display: none;
+    line-height: 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    min-width: 160px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.links li:hover .sub-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sub-menu li {
+    padding: 0 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.sub-menu li:last-child {
+    border-bottom: none;
+}
+
+.sub-menu li a {
+    font-size: 14px;
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    padding: 5px 0;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.sub-menu li:hover {
+    background: #fff;
+    transform: scale(1.05);
+}
+
+.sub-menu li:hover a {
+    color: rgba(177, 45, 45, 0.87);
+}
+
+/* Search Box Styling */
+.search-box {
+    display: flex;
+    align-items: center;
+}
+
+.search-box i {
+    color: #fff;
+    font-size: 18px;
+}
+
+.search-card-content {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 15px auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+}
+
+.search-card-content a {
+    text-decoration: none; /* Removes underline from links */
+    color: inherit; /* Keeps the default text color */
+    align-items: center; /* Centers the items */
+    gap: 10px; /* Space between image and details */
+    border-bottom: none; /* Ensures no bottom border appears */
+}
+
+.input-box button {
+    background-color: #ff6200; /* Vibrant color for better visibility */
+    color: white; /* White text for contrast */
+    border: none; /* Removes default border */
+    padding: 8px 15px; /* Comfortable padding */
+    font-size: 12px; /* Readable font size */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Indicates clickable button */
+    border-radius: 5px; /* Soft rounded corners */
+    transition: background 0.3s ease; /* Smooth hover effect */
+}
+
+.input-box button:hover {
+    background-color: #e55b00; /* Slightly darker shade on hover */
+}
+
+.search-box .login{
+    color: white;
+    padding-left: 20px;
+}
+
+.search-box .login h3{
+    color: yellow;
+}
+
+.input-box input {
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 4px;
+    background: #fff;
+}
+
+
+/* search card display */
+
+.search-card-content:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-image {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.card-details {
+    flex: 1; 
+}
+
+
+.card-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    
+}
+
+.card-description {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 8px;
+}
+
+.card-price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #e63946;
+    margin-bottom: 5px;
+}
+
+.original-price {
+    font-size: 0.85rem;
+    text-decoration: line-through;
+    color: #888;
+    margin-left: 5px;
+}
+
+
+/* Login Menu */
+.login-menu {
+    margin-left: 20px;
+}
+
+.login-menu a {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    background: #1f1f1f;
+    padding: 5px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.login-menu a:hover {
+    background: #fff;
+    color: rgba(177, 45, 45, 0.87);
+}
+
+
+/* Samsung Image Styling */
+.samsung img {
+    width: 100%;
+    
+    height: 55vh;
+}
+
+/* Poster Styling */
+.poster {
+    position: relative;
+    width: 100%;
+    margin: 0 auto; /* Removed unnecessary margin */
+    padding-top: 80px; /* Removed or adjusted the padding */
+    overflow: hidden;
+   
+}
+
+/* Grid container for cards */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Card styling */
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: #fff;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Image in the card */
+.product-card .card-image {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+}
+
+/* Card content */
+.product-card-content {
+    padding: 15px;
+}
+
+
+.product-card-content .card-name {
+    white-space: nowrap;        /* Prevents text from wrapping */
+    overflow: hidden;           /* Hides the overflowing content */
+    text-overflow: ellipsis;    /* Adds "..." at the end when the text overflows */
+    text-align: center;
+    font-size: 1.2em;
+    margin: 0 0 10px;
+    color: #333;
+}
+
+
+.heading{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+.product-card-content .card-price {
+    font-size: 0.9em;
+    color:red;
+    text-align: left;
+}
+
+footer {
+    background-color: #1f1f1f;
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.social-media {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #444;
+}
+
+.social-media p {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.social-icons i {
+    color: white;
+    margin-left: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.social-icons i:hover {
+    color: #b12d2d;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.footer-section {
+    flex: 1;
+    padding: 20px;
+    color: #fff;
+}
+
+.footer-section p{
+    text-align: justify;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #b12d2d;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 8px 0;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    display: inline-block;
+    transition: background 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    background: #b12d2d;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.footer-bottom p {
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    border-top: 1px solid #444;
+}
+
+.footer-bottom a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+}
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+
+
+

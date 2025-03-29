@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.product_name }} | Mcart</title>
+    <link rel="stylesheet" href="{% static 'css/newproducts.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+        <a href="{% url 'home' %}"><img src="{% static 'images/Mcart.png' %}" alt="MCart"></a> 
+         <div class="nav-links">
+             <ul class="links">
+                 <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+                 <li><a href="#"><i class="fa-solid fa-mobile"></i> Products</a>
+                    <ul class="htmlCss-sub-menu sub-menu">
+                        {% for product_category in product_category %}
+                       <li><a href="{% url 'product'  product_category.id %}">{{  product_category.name }}</a></li>
+                       {%endfor %}
+                    </ul></li>
+                    
+                 <li><a href="{% url 'contactus' %}" ><i class="fa-brands fa-servicestack"></i> About Us</a></li>
+                 <li><a><i class="fa-solid fa-bars"></i> More</a>
+                    
+                     <ul class="htmlCss-sub-menu sub-menu">
+                        <li><a href="{% url 'userdashboard' %}">View profile</a></li>
+                        <li><a href="{% url 'sellproducts' %}">sell products</a></li>
+                       <li><a href="{% url 'logout' %}">Logout</a></li>
+                     </ul>
+                 </li>
+                 
+             </ul>
+         </div>
+  
+         <div class="user-welcome">
+                 {% if user.is_authenticated %}
+                 <div class="login">
+                   <p>Welcome.</p>
+                   <h3>{{user.username}} !</h3> 
+                 </div>
+                         
+             {% else %} 
+             <div class="login-menu">
+                <a href="{% url 'login' %}">Login</a>
+            </div> 
+            {% endif %}
+
+            <div class="add-to-cart-button">
+                <a href="{% url 'cartpage' %}"> <i class="fa-brands fa-opencart"></i> </a>
+             </div>
+        </div>
+     </nav>
+
+
+     {% if samsung_a56 %}
+     <div class="product-container">
+        <div class="product-fields">
+            <img src="{{ a56.product_image.url }}" alt="">
+            <h3>{{ a56.product_name }}</h3>
+         
+            {% csrf_token %}
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            <input type="hidden" id="pid" value="{{ a56.id }}">
+
+            <span class="original-price">Old Price <strike>{{ a56.original_price }}</strike></span>
+            <span class="discounted-price">Now {{ a56.new_price }}</span>
+
+            <div class="quantity-selector">
+                <button class="quantity-btn " id="btnminus">-</button>
+                <input type="number" id="btntext" name="quantity" min="1" max="{{ a56.product_quantity }}" value="1" readonly>
+                <button class="quantity-btn" id="btnplus">+</button>
+            </div>
+            
+            <div class="submit-button">
+                <button class="add-to-cart" id="btncart" data-url="{% url 'addtocart' %}">
+                    Add to Cart
+                </button>
+                <a href="{% url 'payment_page' a56.id %}" class="buy-now" id="buybtn">Buy Now</a>
+            </div>
+
+            <div class="product-details">
+                <h2>Description</h2>
+                <p>{{ a56.product_description }}</p>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="product-container">
+        <div class="product-fields">
+            <img src="{{ product.product_image.url }}" alt="">
+            <h3>{{ product.product_name }}</h3>
+         
+            {% csrf_token %}
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            <input type="hidden" id="pid" value="{{ product.id }}">
+
+            <span class="original-price">Old Price <strike>{{ product.original_price }}</strike></span>
+            <span class="discounted-price">Now {{ product.new_price }}</span>
+
+            <div class="quantity-selector">
+                <button class="quantity-btn " id="btnminus">-</button>
+                <input type="number" id="btntext" name="quantity" min="1" max="{{ product.product_quantity }}" value="1" readonly>
+                <button class="quantity-btn" id="btnplus">+</button>
+            </div>
+            
+            <div class="submit-button">
+                <button class="add-to-cart" id="btncart" data-url="{% url 'addtocart' %}">
+                    Add to Cart
+                </button>
+                <a href="{% url 'payment_page' product.id %}" class="buy-now" id="buybtn">Buy Now</a>
+            </div>
+
+            <div class="product-details">
+                <h2>Description</h2>
+                <p>{{ product.product_description }}</p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="social-media">
+                <p>Get connected with us on social networks:</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-google"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-linkedin-in"></i>
+                    <i class="fab fa-github"></i>
+                </div>
+            </div>
+
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MCart</h3>
+                    <p>Mcart is an e-commerce platform specializing in electronics. Customers can browse and purchase from trusted sellers, supporting small businesses with competitive prices.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>PRODUCTS</h3>
+                    <ul>
+                        {% for product_category in product_category %}
+                       <li><a href="{% url 'product'  product_category.id %}">{{ product_category.name }}</a></li>
+                       {%endfor %}
+                     </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>USEFUL LINKS</h3>
+                    <ul>
+                        <li>Your Account</li>
+                        <li>Become an Affiliate</li>
+                        <li>Shipping Rates</li>
+                        <li>Help</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>CONTACT</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Kovilpatti, Tamilnadu</li>
+                        <li><i class="fas fa-envelope"></i> mcart@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +91 6369483595</li>
+                        <li><i class="fas fa-print"></i> +02365989</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Mcart | Developed by <a href="https://github.com/balaji20itl004" target="_blank">Balaji S</a></p>
+            </div>
+        </div>
+    </footer>
+     <script src="https://kit.fontawesome.com/71719b7a0c.js" crossorigin="anonymous"></script>
+     <script src="{% static 'javascript/product.js' %}"></script> 
+</body>
+</html>

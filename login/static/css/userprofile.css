@@ -1,0 +1,475 @@
+/* Googlefont Poppins CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    padding-top: 100px;
+}
+
+/* Navbar Styling */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(177, 45, 45, 0.87);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    padding: 10px;
+}
+
+.navbar {
+    max-width: 1250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    padding: 0 30px;
+}
+
+.navbar img {
+    height: 50%;
+    max-width: 150px;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    line-height: 70px;
+}
+
+.links {
+    display: flex;
+}
+
+.links li {
+    list-style: none;
+    position: relative;
+    padding: 0 15px;
+}
+
+.links li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+}
+
+.links li a:hover {
+    background: #fff;
+    color: rgba(177, 45, 45, 0.87);
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Dropdown Menu */
+.sub-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background: rgba(177, 45, 45, 0.95);
+    border-radius: 0 0 6px 6px;
+    display: none;
+    line-height: 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    min-width: 160px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.links li:hover .sub-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sub-menu li {
+    padding: 0 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.sub-menu li:last-child {
+    border-bottom: none;
+}
+
+.sub-menu li a {
+    font-size: 14px;
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    padding: 5px 0;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.sub-menu li:hover {
+    background: #fff;
+    transform: scale(1.05);
+}
+
+.sub-menu li:hover a {
+    color: rgba(177, 45, 45, 0.87);
+}
+
+.user-welcome {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 18px;
+    gap: 20px;
+}
+
+.user-welcome .login{
+    color: white;
+    padding-left: 20px;
+}
+
+.user-welcome .login h3{
+    color: yellow;
+}
+
+
+/* Profile Sections */
+.view-profile, .edit-profile, .create-profile {
+    width: 70%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Profile Heading */
+.view-profile h2, .edit-profile h2, .create-profile h3 {
+    color: #333;
+}
+
+/* Profile Image - Round */
+.view-profile img {
+    display: block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 10px auto;
+    border: 1px solid black;
+    
+}
+
+/* Profile Info */
+.view-profile p {
+    font-size: 16px;
+    color: #555;
+    padding: 5px 0;
+}
+
+/* Edit Button */
+.view-profile a {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 15px auto;
+}
+
+.view-profile a:hover {
+    background: #0056b3;
+}
+
+/* Form Styling */
+form {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    resize: none;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+form input[type="file"] {
+    padding: 8px;
+}
+
+/* Custom Upload Button */
+.custom-file-upload {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    font-size: 14px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+.custom-file-upload:hover {
+    background: #0056b3;
+}
+
+form input[type="submit"] {
+    background: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px;
+}
+
+form input[type="submit"]:hover {
+    background: #218838;
+}
+
+
+/* Footer Section */
+footer {
+    background-color: #1f1f1f;
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.social-media {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #444;
+}
+
+.social-media p {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.social-icons i {
+    color: white;
+    margin-left: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.social-icons i:hover {
+    color: #b12d2d;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.footer-section {
+    flex: 1;
+    padding: 20px;
+    color: #fff;
+}
+
+.footer-section p{
+    text-align: justify;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #b12d2d;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 8px 0;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    display: inline-block;
+    transition: background 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    background: #b12d2d;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+
+.footer-bottom {
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    border-top: 1px solid #444;
+}
+
+/* Container */
+.container {
+    width: 80%;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Cart Header */
+.cart-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    background-color: #343a40;
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* Cart Items */
+.cart-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    align-items: center; /* Ensures vertical alignment */
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Product Info (Image + Name) */
+.product-info {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between image & text */
+    justify-content: center;
+}
+
+/* Product Image */
+#product-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* Product Name */
+.product-name {
+    font-size: 16px;
+    color: #333;
+    text-align: left;
+}
+
+/* Prices & Quantity (Aligned Properly) */
+.price, .quantity, .total-cost {
+    font-size: 16px;
+    color: #444;
+    text-align: center;  /* Ensure everything is centered */
+}
+
+/* Delete Button */
+.delete {
+    text-align: center;
+}
+
+.delete-btn {
+    background: red;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.delete-btn:hover {
+    background: darkred;
+}
+
+/* Cart Summary */
+.cart-summary {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.cart-summary h4 {
+    margin-right: 20px;
+    font-size: 20px;
+    color: #222;
+}
+
+/* Buttons */
+.checkout-btn, .shop-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 10px 5px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.checkout-btn {
+    background: #28a745;
+    color: white;
+}
+
+.checkout-btn:hover {
+    background: #218838;
+}
+
+.shop-btn {
+    background: #007bff;
+    color: white;
+}
+
+.shop-btn:hover {
+    background: #0056b3;
+}
