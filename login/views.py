@@ -87,7 +87,6 @@ def edit_userprofile(request):
 
 
 User = get_user_model()
-print(User)
 
 def deleteprofile(request):
     userprofiledisplay = userprofile.objects.get(user=request.user)

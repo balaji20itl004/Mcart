@@ -8,11 +8,9 @@ from django.core.mail import send_mail
 def category_products():
     return category.objects.all()
     
-
-
 def index(request):
     categories = category_products()
-    b=product.objects.filter(trending_product=False)
+    products=product.objects.filter(trending_product=False)
     mobiles_category = category.objects.get(name="Mobiles")
     apple_mobiles = product.objects.filter(category=mobiles_category, product_vendor="Apple Store")
     laptop_category=category.objects.get(name="Laptops and PCs")
@@ -24,7 +22,7 @@ def index(request):
     index={
 
     "categories":categories, 
-    "product":b,  
+    "product":products,  
     "products":apple_mobiles,
     "laptop":laptops,
     "search":search,
